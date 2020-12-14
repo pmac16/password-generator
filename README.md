@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 
 ## Purpose
 Working as an employee with access to sensitive data means that those employees need to be able to have strong passwords to protect company data. Using a random password generator is an easy way to create a password that meets strict criteria. Stronger passwords mean greater security for the employee and the cmopany.
