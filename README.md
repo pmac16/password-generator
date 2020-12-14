@@ -13,7 +13,7 @@ This website provides the user with a complex password. The user can select if t
 ## Website
 https://pmac16.github.io/password-generator/
 
-![Screenshot of Deployed Site](./ScreenShot.png)
+![Screenshot of Deployed Site](Images/ScreenShot.png)
 
 
 ### ©️Priya Macpherson
