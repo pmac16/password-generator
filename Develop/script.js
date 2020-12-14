@@ -10,43 +10,38 @@ var confirmSpecialCharacter;
 var confirmNumericCharacter;
 var confirmUpperCase;
 var confirmLowerCase;
-var determinedPassword;
-var numberConfirms;
+var numberConfirms = 0; 
 var whatConfirmed= [];
-var nextCharacter; // used to store the value of teh next charatceter generated for teh paassword
+var nextCharacter; // used to store the value of the next character generated for the paassword
 var i;
 
-determinedPassword="";
-numberConfirms = 0;
 //function to start password generator
-generatePassword();
+writePassword();
 
 function generatePassword() {
 
-  //password complexity 
+  var determinedPassword = "";
 
-
+  // Ask character length
   var characterLength = parseInt(prompt("How many characters would you like your password to be? Choose between 10 and 128 characters."));
-  
-
 
   while (characterLength <10 || characterLength >128) {
     window.alert("Password length must be between 10 and 128 characters. Please try again.");
     var characterLength = parseInt(prompt("How many characters would you like your password to be?"));
   }
 
-  //
-  var confirmSpecialCharacter = confirm("Click OK to include special characters in your password.");
+  // Track the number of confirmations in numberConfirms
+  // Track which confiramtion in an array called whatConfirmed so we can determine what type each character in the password is going to be  
 
-  // now let us keep tr5ack of te number of confirmations in a variable nuimberConfirms
-  // and also let us keep tracj which confirmation in an array whatConfirmed 
-  // the aboive is needed to determine what type each character in teh password is going to be
+  //Confirm special characters 
+  var confirmSpecialCharacter = confirm("Click OK to include special characters in your password.");
 
   if (confirmSpecialCharacter) {
     numberConfirms ++;
     whatConfirmed[numberConfirms]= "Special"
   }
 
+  //Confirm numbers 
   var confirmNumericCharacter = confirm("Click OK to include numbers in your password.");
 
   if (confirmNumericCharacter) {
@@ -55,23 +50,22 @@ function generatePassword() {
 
   }
 
+  //confirm lowercase letters
   var confirmLowerCase = confirm("Click OK to include lower case letters in your password.");
   if (confirmLowerCase) {
     numberConfirms ++;
     whatConfirmed[numberConfirms] = "Lowercase";
   }
 
+  //confirm uppercase letters
   var confirmUpperCase = confirm("Click OK to include upper case letters in your password.");
   if (confirmUpperCase) {
     numberConfirms ++;
     whatConfirmed[numberConfirms] = "Uppercase";
   }
 
+  //Determie what type is the nth character in the password 
   for (i = 1; i<= characterLength; i++){
-
-    // this is where i am going to generate the actual character for teh password
-
-    // firtsd let us determine what type is teh nth character in teh password
 
    var answer=  whatConfirmed[Math.floor(Math.random()*numberConfirms)+1]
   
@@ -86,45 +80,36 @@ function generatePassword() {
        nextCharacter=lowerCase();
        break;
      case 'Special':
-       nextCharacter=oddCharacters();
+       nextCharacter=specCharacters();
        break;
    }
     
-  
        determinedPassword += nextCharacter;
-       //console.log(i,nextCharacter,determinedPassword);
+      
   }
-  console.log(determinedPassword);
+ return(determinedPassword);
 
 }
 
 
 function lowerCase() {
     // randomly choose a lower case character
-    //var randomAlphalower = alphaLower[Math.floor(Math.random() * 25)];
-   
     return(alphaLower[Math.floor(Math.random() * 25)]);
-
-   
 }
 
 function upperCase() {
     // randomly choose an upper case character
-    var randomAlphaupper = alphaUpper[Math.floor(Math.random()*25)];
-    return (randomAlphaupper);
+    return (alphaUpper[Math.floor(Math.random()*25)]);
 }
 
 function numericCharacter() {
     //randomly choose a number
-    var numValue = numericValues[Math.floor(Math.random() * 9)];
-    return (numValue);
-    
+    return (numericValues[Math.floor(Math.random() * 9)]);
 }
 
-function oddCharacters() {
+function specCharacters() {
     //randomly choose a special character
-    var randomSpecial = specialCharacters[Math.floor(Math.random() * 3)];
-    return (randomSpecial);
+    return (specialCharacters[Math.floor(Math.random() * 3)]);
 }
 
 
