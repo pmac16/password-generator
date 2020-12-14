@@ -23,10 +23,10 @@ function generatePassword() {
   var determinedPassword = "";
 
   // Ask character length
-  var characterLength = parseInt(prompt("How many characters would you like your password to be? Choose between 10 and 128 characters."));
+  var characterLength = parseInt(prompt("How many characters would you like your password to be? Choose between 8 and 128 characters."));
 
-  while (characterLength <10 || characterLength >128) {
-    window.alert("Password length must be between 10 and 128 characters. Please try again.");
+  while (characterLength <8 || characterLength >128) {
+    window.alert("Password length must be between 8 and 128 characters. Please try again.");
     var characterLength = parseInt(prompt("How many characters would you like your password to be?"));
   }
 
